@@ -12,9 +12,17 @@ app = FastAPI(title="Study Assistant Pro API")
 async def on_startup():
     await init_db()
 
+
+# Explicitly list allowed origins to prevent CORS errors in both local development and production
+origins = [
+    settings.frontend_url,                      # Dynamically reads from your .env / Render config
+    "https://study-assistant-pro.vercel.app",   # Your live Vercel production frontend
+    "http://localhost:5173",                     # Vite local development server
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.frontend_url, "http://localhost:5173"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
