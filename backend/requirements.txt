@@ -1,3 +1,11 @@
-.\venv\Scripts\activate
-uvicorn app.main:app --reload.\venv\Scripts\activate
-uvicorn app.main:app --reload
+fastapi
+uvicorn[standard]
+sqlalchemy[asyncio]
+asyncpg
+google-genai
+stripe
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+pydantic-settings
+pydantic
